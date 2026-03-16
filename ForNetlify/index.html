@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Todolist</title>
+
+  <style>* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: #212121;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  padding-top: 80px;
+
+}
+
+/* Title and Subtitle */
+h1 {
+
+  color: burlywood;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+p {
+  color: bisque;
+  margin-bottom: 25px;
+  font-size: 1rem;
+}
+
+/* Input & Button Container */
+#todo-input {
+  width: 320px;
+  padding: 10px 14px;
+  margin: 20px 0;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.15);
+  
+}
+
+#todo-input:focus {
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+  transform: scale(1.02);
+}
+
+/* Add Button */
+#add-btn {
+  margin-left: 10px;
+  padding: 10px 20px;
+  background: #4e54c8;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(148, 142, 142, 0.25);
+}
+
+#add-btn:hover {
+  background: #9195e1;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(158, 153, 153, 0.3);
+}
+
+/* Todo List Container */
+#todo-list {
+  list-style: none;
+  margin-top: 30px;
+  padding: 0;
+  width: 360px;
+  background: rgba(165, 110, 110, 0.15);
+  border-radius: 16px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 25px rgba(219, 158, 158, 0.2);
+  overflow: hidden;
+  
+}
+
+/* Each Todo Item */
+#todo-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  color: #fff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: background 0.3s ease;
+  
+}
+
+#todo-list li:hover {
+  background: rgba(222, 211, 211, 0.1);
+}
+
+/* Checkbox styling */
+#todo-list input[type="checkbox"] {
+  accent-color: #e52929;
+  transform: scale(1.3);
+  margin-right: 10px;
+  
+}
+
+/* Todo Text */
+#todo-list span {
+  flex: 1;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+#todo-list span:hover {
+  color: #e68c26;
+}
+
+/* Delete Button */
+#todo-list button {
+  background: #db2f40;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+#todo-list button:hover {
+  background: #dd3122;
+  transform: scale(1.05);
+}
+
+/* Completed Todo Animation */
+#todo-list li input[type="checkbox"]:checked+span {
+  text-decoration: line-through;
+  color: #b0b0b0;
+  transition: all 0.3s ease;
+  
+}
+
+/* Smooth fade-in for new todos */
+#todo-list li {
+  animation: fadeIn 0.4s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  body {
+    padding-top: 50px;
+  }
+
+  #todo-input {
+    width: 200px;
+  }
+
+  #todo-list {
+    width: 300px;
+  }
+}</style>
+
+</head>
+
+<body>
+  <h1>Shivam Todo list</h1>
+  <br />
+  <p># DoubleClick to edit</p>
+  <!-- main input section   -->
+  <input type="text" id="todo-input" placeholder="Enter a todo and press Add or Enter" />
+  <br />
+  <button id="add-btn">Add</button>
+  <br />
+  <ul id="todo-list"></ul>
+
+  <script >//select DOM elements
+const input = document.getElementById('todo-input');
+const addBtn = document.getElementById('add-btn');
+const list = document.getElementById('todo-list');
+
+//try to load saved todos from local storage
+const saved = localStorage.getItem('todos');
+const todos = saved ? JSON.parse(saved) : [];
+
+function saveTodos() {
+  // save todos array to local storage
+  localStorage.setItem('todos', JSON.stringify(todos));
+}
+
+//create a dom node for a todo object and append it to the list
+
+function createTodoNode(todo, index) {
+  const li = document.createElement('li');
+
+  // checkbox to toggle completion
+  const checkbox = document.createElement('input');
+  checkbox.type = 'checkbox';
+  checkbox.checked = !!todo.completed;
+  checkbox.addEventListener("change", () => {
+    todo.completed = checkbox.checked;
+
+    // TODO :visual feedback: strike-through when completed
+    textSpan.style.textDecoration = todo.completed ? 'line-through' : "";
+
+    saveTodos();
+  });
+
+  // text of the todo
+  const textSpan = document.createElement("span");
+  textSpan.textContent = todo.text;
+  textSpan.style.margin = "0.8px";
+  if (todo.completed) {
+    textSpan.style.textDecoration = 'line-through';
+  }
+  //Add double-click event listner to edit todo
+  textSpan.addEventListener("dblclick", () => {
+    const newText = prompt("Edit todo", todo.text);
+    if (newText !== null) {
+      todo.text = newText.trim();
+      textSpan.textContent = todo.text;
+      saveTodos();
+    }
+  });
+
+  // delete todo button
+  const delBtn = document.createElement('button');
+  delBtn.textContent = "Delete";
+  delBtn.addEventListener('click', () => {
+    todos.splice(index, 1);
+    render();
+    saveTodos();
+  });
+  li.appendChild(checkbox);
+  li.appendChild(textSpan);
+  li.appendChild(delBtn);
+  return li
+}
+//render the whole todo list from todo array
+function render() {
+  list.innerHTML = '';
+
+  // recreate each item
+  todos.forEach((todo, index) => {
+    const node = createTodoNode(todo, index);
+
+    list.appendChild(node);
+  });
+}
+
+function addTodo() {
+  const text = input.value.trim();
+  if (!text) {
+    return
+  }
+  // push a new todo object
+  todos.push({ text: text, completed: false });
+  input.value = '';
+  render();
+  saveTodos();
+}
+
+addBtn.addEventListener("click", addTodo);
+input.addEventListener('keydown', (e) => {
+  if (e.key == 'Enter') {
+    addTodo();
+  }
+});
+render();
+</script>
+</body>
+
+</html>
