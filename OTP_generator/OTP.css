@@ -1,0 +1,58 @@
+body{
+    font-family: verdana;
+    text-align: center;
+}
+
+#dice{
+    font-size: 3em;
+    padding: 5px 25px;
+    border-radius: 5px;
+}
+Label{
+      font-size: 4em;
+}
+#myButton{
+    height: 60px;
+    width: 90px;
+    border-radius: 10px;
+    background-color: antiquewhite;
+}
+
+#DiceButton{
+     height: 60px;
+    width: 90px;
+    border-radius: 10px;
+    background-color: antiquewhite;  
+    margin-top: 30px; 
+}
+
+.dice{
+    width: 80px;
+    height: 80px;
+    position: relative;
+    margin: 5px;
+    margin-top: 20px;
+    margin-left: 190px;
+    border-radius: 10px rgb(16, 16, 16 , 0.25);
+    box-shadow: 0 0 10px ;
+}
+.diceContainer{
+    display: flex;
+
+}
+.diceDot{
+--top:0%;
+--left:0%;
+
+    width: 15px;
+    height: 15px;
+    background-color: black;
+    border-radius: 50%;
+
+    /* dot positioning */
+    position: absolute;
+    top: var(--top);
+    left: var(--left);
+    transform: translateX(calc(var(--left) * -1)) translateY(calc(var(--top) * -1)) ;
+
+}
