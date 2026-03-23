@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="passgen.css" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+
+    <title>Password Generator | JavaScript Project</title>
+  </head>
+  <body>
+    <div class="container">
+        <br> 
+      <!-- <h1>Password Generator</h1> -->
+
+      <!-- <div class="inputBox">
+        <input type="text" class="passBox" id="passBox" disabled />
+        <span class="material-icons" id="copyIcon">content_copy</span>
+      </div> -->
+
+            <div class="brutalist-container">
+  <input
+    placeholder="will get back to you"
+    class="brutalist-input smooth-type"
+    type="text"
+    disabled
+    id="passBox"
+  />
+  <br> <br><br>
+  <div style="display: flex; gap: 70px; cursor: pointer;">
+  <p>To copy Password click Here</p>
+    <span class="material-icons" id="copyIcon">content_copy </span></div>
+    <br><br>
+  <label class="brutalist-label">PASSWORD GENERATOR </label>
+</div>
+
+      <input type="range" min="1" max="30" value="8" id="inputSlider" />
+<br> 
+      <div class="row">
+        <p>Password Length</p>
+        <span id="sliderValue"></span>
+      </div>
+<br> 
+      <div class="row">
+        <label for="lowercase">Include Lowercase Letters (a-z)</label>
+        <input type="checkbox" name="lowercase" id="lowercase" checked/>
+      </div>
+<br> 
+      <div class="row">
+        <label for="uppercase">Include Uppercase Letters (A-Z)</label>
+        <input type="checkbox" name="uppercase" id="uppercase" checked/>
+      </div>
+<br> 
+      <div class="row">
+        <label for="numbers">Include Numbers (0-9)</label>
+        <input type="checkbox" name="numbers" id="numbers" checked/>
+      </div>
+<br> 
+      <div class="row">
+        <label for="symbols">Include Symbols (!,@,#,$,%,^,&,*,_)</label>
+        <input type="checkbox" name="symbols" id="symbols" checked/>
+      </div>
+
+      <!-- <button type="button" class="genBtn" id="genBtn">
+        Generate Password
+      </button> -->
+      <br><br>
+            <button class="btn cube cube-hover" type="button " id="genBtn">
+  <div class="bg-top">
+    <div class="bg-inner"></div>
+  </div>
+  <div class="bg-right">
+    <div class="bg-inner"></div>
+  </div>
+  <div class="bg">
+    <div class="bg-inner"></div>
+  </div>
+  <div class="text">Generate Password</div>
+</button>
+    </div>
+
+    <script src="passgen.js"></script>
+  </body>
+</html>
