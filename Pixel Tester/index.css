@@ -1,0 +1,90 @@
+/* body{
+    display: flex;
+} */
+.navbar{
+  height: 80px;
+  width: 100%;
+    background-color: antiquewhite;
+    display: flex;
+    
+   
+
+}
+.icon{
+    margin-top: 7px;
+    width: 200px;
+    margin-left: 30px;
+}
+.help1{
+    margin-left: auto;
+}
+.help{
+    
+    display: flex;
+    /* width: 100%; */
+    gap: 50px;
+    margin-right: 40px;
+    /* margin-left: 950px; */
+    margin-top: 29px;
+   
+}
+.button{
+      cursor: pointer;
+    border: 0;
+    background-color: none;
+    background: none;
+}
+.colorbox{
+   display: flex;
+    /* background-color: aquamarine; */
+    justify-content: center;
+    margin-top: 150px;
+    gap: 20px;
+}
+.red{
+       cursor: pointer;
+    height: 80px;
+    width: 100px;
+    background: red;
+}
+.green{
+       cursor: pointer;
+      height: 80px;
+    width: 100px;
+    background: green;
+}
+.blue{
+       cursor: pointer;
+      height: 80px;
+    width: 100px;
+    background: blue;
+}
+.black{
+       cursor: pointer;
+      height: 80px;
+    width: 100px;
+    color: white;
+    background: black;
+}
+.white{
+       cursor: pointer;
+      height: 80px;
+    width: 100px;
+    
+    background: #fff;
+}
+
+.start{
+    /* background-color: aqua; */
+    display: flex;
+    margin-top: 50px;
+   
+    
+    justify-content: center;
+}
+.startbutton{
+    cursor: pointer;
+    background: rgb(100, 197, 233);
+     height: 50px;
+    width: 90px;
+}
