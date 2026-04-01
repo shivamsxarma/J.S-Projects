@@ -1,0 +1,15 @@
+h1{
+    border-radius:5px  ;
+}
+.hii{
+    background-color: antiquewhite;
+    height: 40px;
+    width: 40px;
+}
+
+
+#light{
+    height: 50px;
+    width: 50px;
+    background-color: red;
+}
