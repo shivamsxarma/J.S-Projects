@@ -1,17 +1,5 @@
-// let light = document.querySelector('#light')
+let h1 = document.querySelector('h1');
+console.log(h1.tagName) //tag return karta haii
+console.log(h1.nodeName) // tagname , text node , comment node.
 
-// let on = document.querySelector('on')
-// on.addEventListener('click',()=>{
-//      light.style.backgroundColor="yellow"
-// })
-
-
-// let off = document.querySelector('off')
-let light = document.querySelector('#light')
-let on = document.querySelector('#on')
-on.addEventListener('click',()=>{
-    light.style.backgroundColor="yellow"
-    
-  
-})
-let off = document.querySelector('#off')
+console.log(h1.firstChild)
