@@ -1,6 +1,15 @@
-#light{
+/* #light{
     height: 100px;
     width: 100px;
     background-color: red;
     border: 6px solid black;
+} */
+
+.div{
+    background-color: red;
+    padding: 20px;
+}
+
+p{
+    border: 2px solid black;
 }
