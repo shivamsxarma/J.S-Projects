@@ -64,5 +64,7 @@
 // let a = document.getElementById('div')
 // a.style.backgroundColor='green'
 
-let a = document.querySelector('.div')
-a.style.backgroundColor='green'
+// let a = document.querySelector('.div')
+// a.style.backgroundColor='green'
+
+
